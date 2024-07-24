@@ -35,19 +35,19 @@ int main()
     return 0;
 }
 // Only for STM
-// void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-// {
-//     if (htim->Instance == TIM1)
-//     {
-//         if (arrived == 1)
-//         {
-//             pointToDist(points[pointPath[++currentPoint]][1], points[pointPath[++currentPoint]][2]);
-//             initParam();
-//         }
-//         arrived = moveTo();
-//         t_ms++;
-//     }
-// }
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+    if (htim->Instance == TIM1)
+    {
+        if (arrived == 1)
+        {
+            pointToDist(points[pointPath[++currentPoint]][1], points[pointPath[++currentPoint]][2]);
+            initParam();
+        }
+        arrived = moveTo();
+        t_ms++;
+    }
+}
 void initPath(float distanceArray[pointNumbers][pointNumbers], int pointPath[pointNumbers], int newPointPath[pointNumbers])
 {
     for (int i = 0; i < pointNumbers; i++)
